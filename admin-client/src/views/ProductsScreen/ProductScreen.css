@@ -1,0 +1,19 @@
+.key {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.value {
+    font-size: 14px;
+}
+
+.productImageContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.productImageContainer>img {
+    max-width: 275px;
+    max-height: 275px;
+    margin-bottom: 16px;
+}

@@ -1,0 +1,110 @@
+.cat-menu-header {
+    width: 100%;
+    height: 40px;
+    background: #ECF4F0;
+    /* background: greenyellow; */
+    border-bottom: 1px solid #3E6F38;
+    border-top: 1px solid #3E6F38;
+    box-shadow: 0 2px 2px -2px #3E6F38;
+}
+
+.cat-menu-header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cat-menu-header > ul {
+    display: flex;
+    justify-content: center;
+    /* margin: 0 50px; */
+    position: relative;
+}
+
+.cat-menu-header > ul > li > span {
+    display: block;
+    line-height: 40px;
+    cursor: pointer;
+    padding: 0 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #676767;
+}
+
+.cat-menu-header > ul > li > span:hover {
+    color: #3E6F38;
+}
+
+.cat-menu-header > ul > li > ul {
+    position: absolute;
+    background: #3E6F38;
+    border-left: 5px solid #ECF4F0;
+    border-right: 5px solid #ECF4F0;
+    border-bottom: 5px solid #ECF4F0;
+    box-shadow: 2px 2px 4px -2px #676767;
+    border-radius: 0 0 10px 10px;
+    left: 30%;
+    right: 30%;
+    top: 39px;
+    display: none;
+}
+
+.cat-menu-header > ul > li:hover ul{
+    display: block;
+}
+
+.cat-menu-header > ul > li > ul > li {
+    margin: 0 10px;
+    min-width: 200px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    /* float: left; */
+}
+
+.cat-menu-header > ul > li > ul > li:first-child {
+    margin-top: 10px;
+    border-top: 1px solid white;
+    border-radius: 4px 4px 0 0;
+}
+
+.cat-menu-header > ul > li > ul > li:last-child {
+    margin-bottom: 10px;
+    border-bottom: 1px solid white;
+    border-radius: 0 0 4px 4px;
+}
+
+.cat-menu-header > ul > li > ul > li > a {
+    font-weight: bold;
+}
+
+.cat-menu-header > ul > li > ul > li a {
+    /* padding: 10px; */
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+
+@media screen and (max-width: 767px) {
+    
+    /* .cat-menu-header {
+        width: 100%;
+        height: 40px;
+        background: #ECF4F0;
+        border-bottom: 1px solid #3E6F38;
+        border-top: 1px solid #3E6F38;
+        box-shadow: 0 2px 2px -2px #3E6F38;
+    } */
+
+    .cat-menu-header > ul > li > span {
+        display: flex;
+        justify-content: center;
+        padding: 0 7px;
+        font-size: 0.9rem;
+    }
+
+    .cat-menu-header > ul > li > ul {
+        left: 5%;
+        right: 5%;
+    }
+    
+}

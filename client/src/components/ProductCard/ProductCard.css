@@ -1,0 +1,170 @@
+.product {
+    width: 300px;
+    padding: 1rem;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    margin: 8px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+.product h1 {
+    background: #3E6F38;
+    color: #ECF4F0;
+}
+
+.product > img{
+    height: 275px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.product-info > p {
+    margin-bottom: 8px;
+}
+
+.info-price {
+    font-weight: bold;
+}
+
+.info-name {
+    font-size: 1rem;
+    overflow: hidden;
+}
+
+.info-description {
+    font-size: 0.8rem;
+}
+
+.add-to-cart-quantity>input {
+    width: 68%;
+    height: 25px;
+    text-align: end;
+    margin-left: 7px;
+    padding-right: 5px;
+}
+
+.add-to-cart-button {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Button */
+
+.info-button {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 1rem;
+}
+
+:root {
+    --primary: #3E6F38;
+}
+
+.btn {
+    padding: 8px 10px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn:hover{
+    padding: 8px 20px;
+    transition: all 0.3s ease-out;
+    background: #ECF4F0;
+    color: #3E6F38;
+    font-weight: bold;
+    border: 1px solid var(--primary);
+    transition: 250ms;
+}
+
+.btn--primary {
+    background-color: var(--primary)
+}
+
+.btn--outline{
+    background-color: transparent;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 4px;
+    border: 1px solid var(--primary);
+}
+
+.btn--med{
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.btn--large{
+    padding: 12px 26px;
+    border-radius: 4px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.btn-disabled {
+    pointer-events: none;
+}
+
+@media screen and (max-width: 1232px) {
+    .product {
+        width: 360px;
+    }
+}
+
+@media screen and (max-width: 1115px) {
+    .product {
+        width: 330px;
+    }
+}
+
+@media screen and (max-width: 1028px) {
+    .product {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .product {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 830px) {
+    .product {
+        width: 360px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .product {
+        width: 290px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .product {
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .product {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .product {
+        width: 300px;
+    }
+}

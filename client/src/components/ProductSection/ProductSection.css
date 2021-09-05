@@ -1,0 +1,37 @@
+.product-section {
+    margin-bottom: 10px;
+    padding: 10px 0 0 0;
+}
+
+.sectionImg {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.sectionImg img:hover{
+    filter: brightness(125%);
+}
+
+.sectionImg > img {
+    width: 50%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.our-products-screen-products {
+    display: none;
+}
+
+.show {
+    display: grid;
+}
+
+@media screen and (max-width: 767px) {
+
+    .sectionImg > img {
+        width: 80%;
+    }
+
+}

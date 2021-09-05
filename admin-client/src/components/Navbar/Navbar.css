@@ -1,0 +1,240 @@
+.NavbarItems {
+    background: #171717;
+    /* linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73,63,252,1) 100%); */
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    z-index: 100;
+    position: sticky;
+    top: 0;
+
+}
+
+.NavbarItems h1{
+    margin: 0;
+}
+
+.navbar-logo{
+    /* width: 35vw; */
+    color: #a1a1a1;
+    justify-self: start;
+    margin-left: 70px;
+    cursor: pointer;
+}
+
+.navbar-logo-link{
+    color: #a1a1a1;
+    text-decoration: none;
+}
+
+.navbar-logo-link:hover{
+    color: #a1a1a1;
+    text-decoration: none;
+}
+
+.navbar-logo-img {
+    /* width: 100%; */
+    height: 80px;
+    width: auto;
+}
+
+.fa-react{
+    margin-left: 0.5rem;
+    font-size: 1.6rem;
+}
+
+.nav-menu {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(8,auto);
+    grid-gap: 0px;
+    list-style: none;
+    text-align: center;
+    width: 60vw;
+    justify-content: end;
+    margin-right: 2rem;
+    margin-bottom: 0;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    /* margin-left: 8px; */
+}
+
+.cart .cart-badge {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    align-items: center;
+    background: #3E6F38;
+    color: #ECF4F0;
+    border-radius: 50%;
+    margin-left: 8px;
+}
+
+.nav-links {
+    color: #a1a1a1;
+    font-weight: bold;
+    text-decoration: none;
+    /* margin-top: -12px; */
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}
+
+.nav-links:hover {
+    background-color: #a1a1a1;
+    color: #171717;
+    border-radius: 4px;
+    transition: all 0.2s ease-out;
+}
+
+.fa-bars {
+    color: #a1a1a1;
+}
+
+.nav-links-mobile {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+}
+
+@media screen and (max-width: 1420px) {
+    
+    .NavbarItems{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .NavbarItems {
+        position: sticky;
+        /* height: 80px; */
+    }
+
+    .nav-menu{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 730px;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+    }
+
+    .nav-menu.active{
+        background: #3f4140;
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+
+    .nav-links{
+        text-align: center;
+        color: #a1a1a1;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    .cart {
+        display: flex;
+        align-items: center;
+        /* margin-left: 8px; */
+    }
+
+    .cart .cart-badge {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size: 1rem;
+        align-items: center;
+        background: #3E6F38;
+        color: #ECF4F0;
+        border-radius: 50%;
+        margin-left: 8px;
+    }
+
+    .nav-links:hover{
+        background-color: #a1a1a1;
+        border-radius: 0;
+    }
+
+    .navbar-logo{
+        /* position: absolute; */
+        margin-left: 45px;
+        top: 0;
+        left: 0;
+        transform: translate(0, 5%);
+    }
+
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+
+    .fa-times {
+        color: #a1a1a1;
+        font-size: 2rem;
+    }
+
+    .nav-links-mobile {
+        display: block;
+        text-align: center;
+        padding: 1.5rem;
+        margin: 2rem auto;
+        border-radius: 4px;
+        width: 100%;
+        background: #3E6F38;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.5rem;
+    }
+
+    .nav-links-mobile:hover{
+        background: #171717;
+        color: #3E6F38;
+        transition: 250ms;
+    }
+
+    .sign-up-btn {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    
+    .navbar-logo {
+        width: 50vw;
+        top: 0;
+        left: 0;
+        transform: translate(0%, 5%);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    
+    .navbar-logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(60%, 40%);
+    }
+}
