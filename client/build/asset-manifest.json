@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ac49eadc.chunk.css",
+    "main.js": "/static/js/main.7f4aa295.chunk.js",
+    "main.js.map": "/static/js/main.7f4aa295.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a06e69b5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a06e69b5.js.map",
+    "static/css/2.df93ccea.chunk.css": "/static/css/2.df93ccea.chunk.css",
+    "static/js/2.022f5713.chunk.js": "/static/js/2.022f5713.chunk.js",
+    "static/js/2.022f5713.chunk.js.map": "/static/js/2.022f5713.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.df93ccea.chunk.css.map": "/static/css/2.df93ccea.chunk.css.map",
+    "static/css/main.ac49eadc.chunk.css.map": "/static/css/main.ac49eadc.chunk.css.map",
+    "static/js/2.022f5713.chunk.js.LICENSE.txt": "/static/js/2.022f5713.chunk.js.LICENSE.txt",
+    "static/media/FarmToHomeLogoLong.png": "/static/media/FarmToHomeLogoLong.b993482a.png",
+    "static/media/beef-logo.png": "/static/media/beef-logo.f193b740.png",
+    "static/media/dairy-eggs-logo.png": "/static/media/dairy-eggs-logo.9fa3d884.png",
+    "static/media/express-packs-logo.png": "/static/media/express-packs-logo.f7f5ca83.png",
+    "static/media/goat-logo.png": "/static/media/goat-logo.856523f9.png",
+    "static/media/honey-logo.png": "/static/media/honey-logo.61b046db.png",
+    "static/media/lamb-logo.png": "/static/media/lamb-logo.8c5d4b21.png",
+    "static/media/pork-logo.png": "/static/media/pork-logo.2210e317.png",
+    "static/media/poultry-logo.png": "/static/media/poultry-logo.e34bfc85.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a06e69b5.js",
+    "static/css/2.df93ccea.chunk.css",
+    "static/js/2.022f5713.chunk.js",
+    "static/css/main.ac49eadc.chunk.css",
+    "static/js/main.7f4aa295.chunk.js"
+  ]
+}
