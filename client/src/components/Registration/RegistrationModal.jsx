@@ -32,11 +32,11 @@ const RegistrationModal = (props) => {
         password: "",
         confirmPassword: "",
         contactNumber: "",
-        street1: "",
-        street2: "",
-        city: "",
-        addressState: "",
-        zip: "",
+        // street1: "",
+        // street2: "",
+        // city: "",
+        // addressState: "",
+        // zip: "",
     }
     const [reg, setReg] = useState(initialReg);
     const [regError, setRegError] = useState(initialReg);
@@ -57,11 +57,11 @@ const RegistrationModal = (props) => {
             password: reg.password,
             confirmPassword: reg.confirmPassword,
             contactNumber: reg.contactNumber,
-            street1: reg.street1,
-            street2: reg.street2,
-            city: reg.city,
-            addressState: reg.addressState,
-            zip: reg.zip
+            // street1: reg.street1,
+            // street2: reg.street2,
+            // city: reg.city,
+            // addressState: reg.addressState,
+            // zip: reg.zip
         }
         dispatch(register(user))
         setReg(initialReg);
@@ -79,11 +79,6 @@ const RegistrationModal = (props) => {
                     password: regAuth.error.error.password,
                     confirmPassword: regAuth.error.error.confirmPassword,
                     contactNumber: regAuth.error.error.contactNumber,
-                    street1: regAuth.error.error.street1,
-                    street2: regAuth.error.error.street2,
-                    city: regAuth.error.error.city,
-                    addressState: regAuth.error.error.addressState,
-                    zip: regAuth.error.error.zip
                 })
             } else {
                 // console.log(regAuth.error.error);
@@ -96,10 +91,6 @@ const RegistrationModal = (props) => {
         }
     }, [regAuth])
 
-    // if (auth.authenticate) {
-    //     return <Redirect to={`/`} />
-    // }
-
     if (regAuth.loading) {
         return <p>Loading...</p>
     }
@@ -111,18 +102,16 @@ const RegistrationModal = (props) => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
             onHide={onHide}
-            // backdrop="static"
-            // keyboard={false}
         >
             <Modal.Header >
                 <Modal.Title>New User</Modal.Title>
-                <Button className="btn btn--primary btn--med sign-up-btn"  onClick={handleClose}>
-                                        Close
-                                    </Button>
+                <Button className="btn btn--primary btn--med sign-up-btn" onClick={handleClose}>
+                    Close
+                </Button>
             </Modal.Header>
             <Modal.Body>
                 <Container>
-                    <Row style={{ marginTop: '40px' }}>
+                    <Row >
                         <Col>
                             <Form onSubmit={handleRegistration}>
                                 <Row style={{ marginBottom: '20px' }}>
@@ -221,83 +210,12 @@ const RegistrationModal = (props) => {
                                         </Form.Text>
                                     </Form.Group>
                                 </Row>
-                                <Row style={{ marginBottom: '20px' }}>
-                                    <Form.Group controlId="formGridAddress1">
-                                        <InputDefault
-                                            name="street1"
-                                            label="Address"
-                                            type="text"
-                                            placeholder="1234 Main St"
-                                            value={reg.street1}
-                                            onChange={handleRegInputs}
-                                        />
-                                        <Form.Text className="text-danger font-weight-bold">
-                                            {regError.street1 ? regError.street1.message : ""}
-                                        </Form.Text>
-                                    </Form.Group>
-                                </Row>
-                                <Row style={{ marginBottom: '20px' }}>
-                                    <Form.Group controlId="formGridAddress2">
-                                        <InputDefault
-                                            name="street2"
-                                            label="Address 2"
-                                            type="text"
-                                            placeholder="Apartment, studio, or floor"
-                                            value={reg.street2}
-                                            onChange={handleRegInputs}
-                                        />
-                                        <Form.Text className="text-danger font-weight-bold">
-                                            {regError.street2 ? regError.street2.message : ""}
-                                        </Form.Text>
-                                    </Form.Group>
-                                </Row>
-                                <Row style={{ marginBottom: '20px' }}>
-                                    <Form.Group as={Col} controlId="formGridCity">
-                                        <InputDefault
-                                            name="city"
-                                            label="City"
-                                            type="text"
-                                            placeholder="City"
-                                            value={reg.city}
-                                            onChange={handleRegInputs}
-                                        />
-                                        <Form.Text className="text-danger font-weight-bold">
-                                            {regError.city ? regError.city.message : ""}
-                                        </Form.Text>
-                                    </Form.Group>
-                                    <Form.Group as={Col} controlId="formGridState">
-                                        <InputDefault
-                                            name="addressState"
-                                            label="State"
-                                            type="text"
-                                            placeholder="State"
-                                            value={reg.addressState}
-                                            onChange={handleRegInputs}
-                                        />
-                                        <Form.Text className="text-danger font-weight-bold">
-                                            {regError.addressState ? regError.addressState.message : ""}
-                                        </Form.Text>
-                                    </Form.Group>
-                                    <Form.Group as={Col} controlId="formGridZip">
-                                        <InputDefault
-                                            name="zip"
-                                            label="Zip"
-                                            type="text"
-                                            placeholder="Zip Code"
-                                            value={reg.zip}
-                                            onChange={handleRegInputs}
-                                        />
-                                        <Form.Text className="text-danger font-weight-bold">
-                                            {regError.zip ? regError.zip.message : ""}
-                                        </Form.Text>
-                                    </Form.Group>
-                                </Row>
 
                                 <Form.Group style={{ display: "flex", justifyContent: "center" }}>
                                     <Button onClick={handleClose} className="btn btn--primary btn--med sign-up-btn" type="submit">
                                         Submit
                                     </Button>
-                                    
+
                                 </Form.Group>
 
                             </Form>

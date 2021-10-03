@@ -6,6 +6,8 @@ import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './HOC/PrivateRoute';
 
 // Components
+import CurrentOrdersScreen from './views/CurrentOrdersScreen/CurrentOrdersScreen';
+import CompleteOrdersScreen from './views/CompleteOrders/CompleteOrders';
 import RegisterScreen from './views/RegisterScreen/RegisterScreen';
 import CategoryScreen from './views/CategoryScreen/CategoryScreen';
 import ProductScreen from './views/ProductsScreen/ProductScreen';
@@ -17,7 +19,6 @@ import HomeScreen from './views/HomeScreen/HomeScreen';
 import { getAllCategories } from './redux/actions/category.actions';
 import { isUserLoggedIn } from './redux/actions/adminAuth.actions'
 import { useSelector, useDispatch } from 'react-redux';
-import OrdersScreen from './views/OrdersScreen/OrdersScreen';
 import { getInitialData } from './redux/actions/initialData.actions';
 
 function App() {
@@ -37,7 +38,8 @@ function App() {
       <Switch>
         <PrivateRoute exact path="/" component={HomeScreen} />
         <PrivateRoute path="/products" component={ProductScreen} />
-        <PrivateRoute path="/orders" component={OrdersScreen} />
+        <PrivateRoute path="/current-orders" component={CurrentOrdersScreen} />
+        <PrivateRoute path="/complete-orders" component={CompleteOrdersScreen} />
         <PrivateRoute path="/categories" component={CategoryScreen} />
         
         <Route exact path="/register" component={RegisterScreen} />

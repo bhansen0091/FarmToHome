@@ -5,6 +5,7 @@ import './Button.css';
 const STYLES = [
     'btn--primary',
     'btn--outline',
+    'btn--orange',
     'btn-disabled'
 ]
 

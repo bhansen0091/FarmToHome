@@ -2,14 +2,19 @@ import { Button } from "../Button/Button";
 import { MenuItems } from './MenuItems';
 import { useEffect, useState } from "react";
 import './Navbar.css';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
 import RegistrationModal from "../Registration/RegistrationModal";
 import LoginModal from "../Login/LoginModal";
 import { logout, login } from "../../redux/actions/userAuth.actions";
+import { updateCart } from "../../redux/actions/cartActions";
+import { Dropdown } from "react-bootstrap";
+import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 
 const NavBar = () => {
+
+    const history = useHistory()
 
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
@@ -41,12 +46,14 @@ const NavBar = () => {
 
     const handleLogout = () => {
         dispatch(logout())
-        return <Redirect to={'/'} />
+        return history.push('/')
     }
 
     useEffect(() => {
         if (auth.authenticate) {
             hideLoginModal()
+            console.log('Updating Cart.. NavBar');
+            dispatch(updateCart());
         }
     }, [auth.authenticate])
 
@@ -89,18 +96,81 @@ const NavBar = () => {
                         </button>
 
                         <button
+                            style={{ marginRight: '10px' }}
                             className="btn btn--primary btn--med sign-up-btn"
                             onClick={showRegModal}>
                             Register
                         </button>
                         {/* <Link className="btn btn--primary btn--med sign-up-btn" to={'/register'}>Register</Link> */}
                     </div>
-                    : <button
-                        style={{ marginRight: '10px' }}
-                        className="btn btn--primary btn--med sign-up-btn"
-                        onClick={handleLogout}>
-                        Logout
-                    </button>
+                    : <>
+                        {/* <style type='text/css'>
+                            {`
+                                .dropdown-menu.show {
+                                    transform: translate(-15px, 43px) !important; 
+                                    inset: 2px auto auto 0px !important;
+                                }
+                                
+                            `}
+                        </style> */}
+                        <Dropdown>
+                            <Dropdown.Toggle
+                                style={{ marginRight: '10px' }}
+                                className="btn btn--primary btn--med sign-up-btn"
+                            >
+                                Brandon
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu
+                                className="dropdown-menu"
+                            // style={{marginRight: '10px'}}
+                            >
+
+                                <Dropdown.Item style={{ marginRight: '10px' }} href="/account">
+                                    Account
+                                </Dropdown.Item>
+
+                                <Dropdown.Item href="/account/orders">
+                                    My Orders
+                                </Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <button
+                            style={{ marginRight: '10px' }}
+                            className="btn btn--primary btn--med sign-up-btn"
+                            onClick={handleLogout}>
+                            Logout
+                        </button>
+
+                        {/* <div className="dropdown">
+                            <button
+                                style={{ marginRight: '10px' }}
+                                className="btn dropdown-toggle btn--primary btn--med sign-up-btn"
+                                id="dropdownMenuButton"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            // onClick={() => console.log('dropdown')}
+                            >
+                                {auth.user.firstName}
+                            </button>
+                            <div
+                                className='dropdown-menu'
+                                aria-labelledby="dropdownMenuButton"
+                                
+                            >
+                                <a href="/account/orders" className="dropdown-item">My Orders</a>
+                            </div>
+                        </div> */}
+
+                        {/* <button
+                            style={{ marginRight: '10px' }}
+                            className="btn btn--primary btn--med sign-up-btn"
+                            onClick={() => console.log('dropdown')}>
+                            {auth.user.firstName}
+                        </button> */}
+                    </>
             }
 
 

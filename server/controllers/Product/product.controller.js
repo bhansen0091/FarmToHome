@@ -33,7 +33,7 @@ module.exports = {
         }
 
         if (req.file) {
-            productObj.productImage = process.env.API + '/public/' + req.file.filename;
+            productObj.productImage = '/public/' + req.file.filename;
         }
 
         Product.create(productObj)

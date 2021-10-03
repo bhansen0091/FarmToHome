@@ -2,7 +2,7 @@ import * as actionTypes from '../constants/adminConstants';
 
 
 const initialState = {
-    token: null,
+    // token: null,
     user: {
         _id: '',
         firstName: '',
@@ -28,7 +28,7 @@ export const authReducer = (state = initialState, action) => {
         case actionTypes.ADMIN_LOGIN_SUCCESS:
             state = {
                 // ...state,
-                token: action.payload.token,
+                // token: action.payload.token,
                 user: action.payload.user,
                 authenticate: true,
                 authenticating: false

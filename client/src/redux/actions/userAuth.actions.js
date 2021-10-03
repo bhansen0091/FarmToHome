@@ -1,4 +1,5 @@
 import * as actionTypes from '../constants/userConstants';
+import * as cartActionTypes from '../constants/cartConstants';
 import axios from 'axios';
 
 
@@ -64,13 +65,13 @@ export const login = (user) => {
             .then(res => {
                 // console.log(res.data);
                 if (res.data.message) {
-                    const { token, user } = res.data;
-                    localStorage.setItem('token', token);
+                    const { user } = res.data;
+                    // localStorage.setItem('token', token);
                     localStorage.setItem('user', JSON.stringify(user));
                     dispatch({
                         type: actionTypes.USER_LOGIN_SUCCESS,
                         payload: {
-                            token, user
+                            user
                         }
                     })
                 } else {
@@ -95,16 +96,26 @@ export const login = (user) => {
 
 export const isUserLoggedIn = () => {
     return async (dispatch) => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            const user = JSON.parse(localStorage.getItem('user'));
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
             dispatch({
                 type: actionTypes.USER_LOGIN_SUCCESS,
                 payload: {
-                    token, user
+                    user
                 }
             })
         }
+
+        // const token = localStorage.getItem('token');
+        // if (token) {
+        //     const user = JSON.parse(localStorage.getItem('user'));
+        //     dispatch({
+        //         type: actionTypes.USER_LOGIN_SUCCESS,
+        //         payload: {
+        //             token, user
+        //         }
+        //     })
+        // }
         // else {
         //     dispatch({
         //         type: actionTypes.ADMIN_LOGIN_FAIL,
@@ -123,9 +134,9 @@ export const logout = () => {
             type: actionTypes.USER_LOGOUT_REQUEST
         });
 
-        const token = localStorage.getItem('token');
+        // const token = localStorage.getItem('token');
 
-        await axios.post(`http://localhost:8000/api/users/logout`, token, { withCredentials: true })
+        await axios.get(`http://localhost:8000/api/users/logout`, { withCredentials: true })
             .then(res => {
                 if (res.status === 200) {
                     // console.log("success");
@@ -133,7 +144,17 @@ export const logout = () => {
                     dispatch({
                         type: actionTypes.USER_LOGOUT_SUCCESS
                     });
+                    dispatch({
+                        type: cartActionTypes.CART_RESET_SUCCESS
+                    });
+                    dispatch({
+                        type: actionTypes.RESET_ADDRESS_REQUEST
+                    })
+                    dispatch({
+                        type: actionTypes.RESET_ADDRESS_SUCCESS
+                    })
                 } else {
+                    console.log('logout fail in else');
                     dispatch({
                         type: actionTypes.USER_LOGOUT_FAIL,
                         payload: res.data.error
@@ -141,7 +162,9 @@ export const logout = () => {
                 }
             })
             .catch(err => {
-                console.log(err.response.data);
+                // console.log(err.response.data);
+                // console.log('logout fail in catch');
+                localStorage.clear();
                 dispatch({
                     type: actionTypes.USER_LOGOUT_FAIL,
                     payload: err.response.data
@@ -150,3 +173,208 @@ export const logout = () => {
     }
 }
 
+export const getAddress = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`/api/address/get`);
+            dispatch({ type: actionTypes.GET_USER_ADDRESS_REQUEST });
+            if (res.status === 200) {
+                const {
+                    userAddress: { address },
+                } = res.data;
+                dispatch({
+                    type: actionTypes.GET_USER_ADDRESS_SUCCESS,
+                    payload: { address },
+                });
+            } else {
+                const { error } = res.data;
+                dispatch({
+                    type: actionTypes.GET_USER_ADDRESS_FAILURE,
+                    payload: { error },
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+export const addAddress = (payload) => {
+    return async (dispatch) => {
+        try {
+            dispatch({ type: actionTypes.ADD_USER_ADDRESS_REQUEST });
+            const res = await axios.post(`/api/address/create`, { payload });
+            if (res.status === 201) {
+                // console.log(res);
+                const {
+                    address: { address },
+                } = res.data;
+                dispatch({
+                    type: actionTypes.ADD_USER_ADDRESS_SUCCESS,
+                    payload: { address },
+                });
+            } else {
+                const { error } = res.data;
+                dispatch({
+                    type: actionTypes.ADD_USER_ADDRESS_FAILURE,
+                    payload: { error },
+                });
+            }
+        } catch (error) {
+            // console.log('1', error.response);
+            // console.log('2', error.response.data.error.errors);
+            // console.log('3', Object.entries(error.response.data.error.errors));
+            // console.log(error.response.data.error.errors.address.errors);
+
+            let temp;
+            let errorCheck;
+
+            if (error.response.data.error.errors.address) {
+                const fieldErrors = error.response.data.error.errors.address.errors;
+                dispatch({
+                    type: actionTypes.ADD_USER_ADDRESS_FAILURE,
+                    payload: { fieldErrors },
+                });
+                // console.log('fieldErrors in if', fieldErrors);
+            } else {
+                var fieldErrors = {};
+                const errorArray = Object.entries(error.response.data.error.errors);
+
+                for (const array of errorArray) {
+
+                    const keyName = array[0].substring('address.0.'.length)
+                    array.splice(0, 1, keyName);
+
+                    const errorVal = array[1];
+
+                    if (keyName === 'name') {
+                        fieldErrors.name = errorVal;
+                    } else if (keyName === 'mobileNumber') {
+                        fieldErrors.mobileNumber = errorVal;
+                    } else if (keyName === 'zipCode') {
+                        fieldErrors.zipCode = errorVal;
+                    } else if (keyName === 'streetOne') {
+                        fieldErrors.streetOne = errorVal;
+                    } else if (keyName === 'city') {
+                        fieldErrors.city = errorVal;
+                    } else if (keyName === 'state') {
+                        fieldErrors.state = errorVal;
+                    } else if (keyName === 'addressType') {
+                        fieldErrors.addressType = errorVal;
+                    }
+                }
+                // console.log('fieldErrors in else', fieldErrors);
+
+                dispatch({
+                    type: actionTypes.ADD_USER_ADDRESS_FAILURE,
+                    payload: { fieldErrors },
+                });
+            }
+        }
+    };
+};
+
+export const addOrder = (payload) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.post(`/api/orders/add`, payload, { withCredentials: true });
+            // console.log('res in addOrder from actions', res);
+            dispatch({ type: actionTypes.ADD_USER_ORDER_REQUEST });
+            if (res.status === 201) {
+                const data = res.data;
+                // console.log('data', data);
+                dispatch({
+                    type: cartActionTypes.CART_RESET_SUCCESS,
+                });
+                dispatch({
+                    type: actionTypes.ADD_USER_ORDER_SUCCESS,
+                    payload: data
+                });
+
+            } else {
+                const { error } = res.data;
+                dispatch({
+                    type: actionTypes.ADD_USER_ORDER_FAILURE,
+                    payload: { error },
+                });
+            }
+        } catch (error) {
+            console.log(error.response);
+        }
+    };
+}
+
+export const getOrders = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`/api/orders/getOrders`, { withCredentials: true });
+            dispatch({ type: actionTypes.GET_USER_ORDER_REQUEST });
+            if (res.status === 200) {
+                // console.log(res.data);
+                const { orders } = res.data;
+                // console.log('orders in getOrders', orders);
+                dispatch({
+                    type: actionTypes.GET_USER_ORDER_SUCCESS,
+                    payload: { orders },
+                });
+            } else {
+                const { error } = res.data;
+                dispatch({
+                    type: actionTypes.GET_USER_ORDER_FAILURE,
+                    payload: { error },
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const getOrder = () => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.get(`/api/orders/getOrder`, { withCredentials: true });
+            dispatch({ type: actionTypes.GET_USER_ORDER_DETAILS_REQUEST });
+            if (res.status === 200) {
+                console.log(res);
+                const { order } = res.data;
+                dispatch({
+                    type: actionTypes.GET_USER_ORDER_DETAILS_SUCCESS,
+                    payload: { order },
+                });
+            } else {
+                const { error } = res.data;
+                dispatch({
+                    type: actionTypes.GET_USER_ORDER_DETAILS_FAILURE,
+                    payload: { error },
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+// export const getOrder = (payload) => {
+//     return async (dispatch) => {
+//         try {
+//             const res = await axios.get(`/api/orders/getOrder`, payload);
+//             dispatch({ type: actionTypes.GET_USER_ORDER_DETAILS_REQUEST });
+//             if (res.status === 200) {
+//                 console.log(res);
+//                 const { order } = res.data;
+//                 dispatch({
+//                     type: actionTypes.GET_USER_ORDER_DETAILS_SUCCESS,
+//                     payload: { order },
+//                 });
+//             } else {
+//                 const { error } = res.data;
+//                 dispatch({
+//                     type: actionTypes.GET_USER_ORDER_DETAILS_FAILURE,
+//                     payload: { error },
+//                 });
+//             }
+//         } catch (error) {
+//             console.log(error);
+//         }
+//     };
+// };

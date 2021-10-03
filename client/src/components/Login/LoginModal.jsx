@@ -23,9 +23,6 @@ const LoginModal = (props) => {
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
 
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-
     const initialLog = {
         email: '',
         password: ''
@@ -39,16 +36,6 @@ const LoginModal = (props) => {
             [e.target.name]: e.target.value
         })
     }
-
-    // const tryLogin = async (e) => {
-    //     e.preventDefault();
-
-    //     await userLogin(e);
-    //     if (auth.authenticate) {
-    //         handleClose();
-
-    //     }
-    // }
 
     const userLogin = (e) => {
         e.preventDefault();
@@ -90,8 +77,6 @@ const LoginModal = (props) => {
             aria-labelledby="contained-modal-title-vcenter"
             centered
             onHide={onHide}
-        // backdrop="static"
-        // keyboard={false}
         >
             <Modal.Header >
                 <Modal.Title>Login</Modal.Title>

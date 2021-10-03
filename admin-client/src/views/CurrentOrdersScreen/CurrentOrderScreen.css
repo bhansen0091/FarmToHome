@@ -1,0 +1,8 @@
+
+.tableBody {
+    display: none;
+}
+
+.show {
+    display: contents;
+}

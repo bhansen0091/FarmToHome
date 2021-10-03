@@ -25,11 +25,11 @@ const RegisterScreen = () => {
         password: "",
         confirmPassword: "",
         contactNumber: "",
-        street1: "",
-        street2: "",
-        city: "",
-        addressState: "",
-        zip: "",
+        // street1: "",
+        // street2: "",
+        // city: "",
+        // addressState: "",
+        // zip: "",
     }
     const [reg, setReg] = useState(initialReg);
     const [regError, setRegError] = useState(initialReg);
@@ -50,11 +50,11 @@ const RegisterScreen = () => {
             password: reg.password,
             confirmPassword: reg.confirmPassword,
             contactNumber: reg.contactNumber,
-            street1: reg.street1,
-            street2: reg.street2,
-            city: reg.city,
-            addressState: reg.addressState,
-            zip: reg.zip
+            // street1: reg.street1,
+            // street2: reg.street2,
+            // city: reg.city,
+            // addressState: reg.addressState,
+            // zip: reg.zip
         }
         dispatch(register(user))
     }
@@ -71,11 +71,11 @@ const RegisterScreen = () => {
                     password: regAuth.error.error.password,
                     confirmPassword: regAuth.error.error.confirmPassword,
                     contactNumber: regAuth.error.error.contactNumber,
-                    street1: regAuth.error.error.street1,
-                    street2: regAuth.error.error.street2,
-                    city: regAuth.error.error.city,
-                    addressState: regAuth.error.error.addressState,
-                    zip: regAuth.error.error.zip
+                    // street1: regAuth.error.error.street1,
+                    // street2: regAuth.error.error.street2,
+                    // city: regAuth.error.error.city,
+                    // addressState: regAuth.error.error.addressState,
+                    // zip: regAuth.error.error.zip
                 })
             } else {
                 // console.log(regAuth.error.error);
@@ -197,7 +197,7 @@ const RegisterScreen = () => {
                                     </Form.Group>
                                 </Form.Row>
 
-                                <Form.Group controlId="formGridAddress1">
+                                {/* <Form.Group controlId="formGridAddress1">
                                     <InputDefault
                                         name="street1"
                                         label="Address"
@@ -266,7 +266,7 @@ const RegisterScreen = () => {
                                             {regError.zip ? regError.zip.message : ""}
                                         </Form.Text>
                                     </Form.Group>
-                                </Form.Row>
+                                </Form.Row> */}
 
                                 <Form.Group style={{ display: "flex", justifyContent: "center" }}>
                                     <Button variant="primary" type="submit">

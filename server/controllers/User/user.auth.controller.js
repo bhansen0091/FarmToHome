@@ -47,7 +47,7 @@ module.exports = {
                                     expires: new Date(Date.now() + 90000000000)
                                 }).json({
                                     message: "User login successful.",
-                                    token: token,
+                                    // token: token,
                                     user: {
                                         _id: user._id,
                                         firstName: user.firstName,

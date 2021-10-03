@@ -8,15 +8,15 @@ const express = require('express'),
     cookieParser = require('cookie-parser'),
     server = app.listen(port, () => console.log(`Listening on ${port}`));
 
-    // {credentials:true, origin: 'http://localhost:3000'}
+// {credentials:true, origin: 'http://localhost:3000'}
 
 app.use(
     cookieParser(),
-    cors({credentials:true, origin: ['http://localhost:4000', 'http://localhost:3000']}),
+    cors({ credentials: true, origin: ['http://localhost:4000', 'http://localhost:3000'] }),
     express.json(),
-    express.urlencoded({"extended":true})
+    express.urlencoded({ "extended": true })
 );
-app.use('/public', express.static('./server/uploads' ))
+app.use('/public', express.static(__dirname + '/server/uploads'))
 
 require('./server/config/database.config');
 require('./server/routes/user.routes')(app);
@@ -24,4 +24,6 @@ require('./server/routes/admin.routes')(app);
 require('./server/routes/product.routes')(app);
 require('./server/routes/category.routes')(app);
 require('./server/routes/cart.routes')(app);
+require('./server/routes/address.routes')(app);
+require('./server/routes/order.routes')(app);
 require('./server/routes/initialData.routes')(app);

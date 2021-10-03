@@ -94,26 +94,32 @@ export const login = (user) => {
 
 export const isUserLoggedIn = () => {
     return async (dispatch) => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            const user = JSON.parse(localStorage.getItem('user'));
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user) {
             dispatch({
                 type: actionTypes.ADMIN_LOGIN_SUCCESS,
                 payload: {
-                    token, user
+                    user
                 }
             })
         }
-        // else {
-        //     dispatch({
-        //         type: actionTypes.ADMIN_LOGIN_FAIL,
-        //         payload: {
-        //             error: 'Failed to login.' 
-        //         }
-        //     })
-        // }
     }
 }
+
+// export const isUserLoggedIn = () => {
+//     return async (dispatch) => {
+//         const token = localStorage.getItem('token');
+//         if (token) {
+//             const user = JSON.parse(localStorage.getItem('user'));
+//             dispatch({
+//                 type: actionTypes.ADMIN_LOGIN_SUCCESS,
+//                 payload: {
+//                     token, user
+//                 }
+//             })
+//         }
+//     }
+// }
 
 export const logout = () => {
     return async (dispatch) => {
@@ -122,9 +128,9 @@ export const logout = () => {
             type: actionTypes.ADMIN_LOGOUT_REQUEST
         });
 
-        const token = localStorage.getItem('token');
+        // const token = localStorage.getItem('token');
 
-        await axios.post(`http://localhost:8000/api/admin/logout`, token, { withCredentials: true })
+        await axios.get(`http://localhost:8000/api/admin/logout`, { withCredentials: true })
             .then(res => {
                 if (res.status === 200) {
                     // console.log("success");
@@ -140,7 +146,8 @@ export const logout = () => {
                 }
             })
             .catch(err => {
-                console.log(err.response.data);
+                // console.log(err.response.data);
+                localStorage.clear();
                 dispatch({
                     type: actionTypes.ADMIN_LOGOUT_FAIL,
                     payload: err.response.data

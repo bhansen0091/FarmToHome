@@ -16,7 +16,7 @@ const reducer = combineReducers({
     regAuth: registrationReducer,
     categoryState: categoryReducer,
     productState: productReducer,
-    // order: orderReducer
+    orders: orderReducer
 })
 
 const store = createStore(

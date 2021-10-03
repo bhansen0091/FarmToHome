@@ -14,9 +14,10 @@ import { getInitialData } from '../../redux/actions/initialData.actions';
 // Components
 import InputDefault from '../../components/UI/Inputs/InputDefault';
 import Layout from '../../components/Layout/Layout';
+// import ProductModal from '../../components/ProductModal/ProductModal';
 
 
-const ProductScreen = () => {
+const ProductScreen = (props) => {
 
     const categoryState = useSelector(state => state.categoryState);
     const productState = useSelector(state => state.productState);
@@ -96,6 +97,7 @@ const ProductScreen = () => {
         form.append("measurement", product.measurement);
         form.append("productImage", product.productImage);
         form.append("inStock", product.inStock);
+        console.log(form);
         dispatch(addProduct(form));
         setShow(false);
         setProduct({
@@ -113,6 +115,16 @@ const ProductScreen = () => {
 
     const renderAddProductModal = () => {
         return (
+
+            // <ProductModal
+            //     product={product}
+            //     show={show}
+            //     handleClose={handleClose}
+            //     handleSave={handleSave}
+            //     handleProductInputs={handleProductInputs}
+            //     createCategorySelectOptions={createCategorySelectOptions}
+            // />
+
             <Modal
                 show={show}
                 size="lg"
@@ -276,6 +288,8 @@ const ProductScreen = () => {
             return null;
         }
 
+        const { REACT_APP_SRC } = process.env
+
         return (
             <Modal
                 show={productModal}
@@ -314,8 +328,11 @@ const ProductScreen = () => {
                         <Col>
                             <label className="key">Product Image</label>
                             <div className="productImageContainer">
-                                <img src={productDetails.productImage} alt={productDetails.name} />
+                                <img src={`${REACT_APP_SRC}${productDetails.productImage}`} alt={productDetails.name} />
                             </div>
+                            {/* <div className="productImageContainer">
+                                <img src={`http://localhost:8000${productDetails.productImage}`} alt={productDetails.name} />
+                            </div> */}
                         </Col>
                     </Row>
                 </Modal.Body>

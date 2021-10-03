@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.ac49eadc.chunk.css",
-    "main.js": "/static/js/main.7f4aa295.chunk.js",
-    "main.js.map": "/static/js/main.7f4aa295.chunk.js.map",
+    "main.css": "/static/css/main.387e2f55.chunk.css",
+    "main.js": "/static/js/main.8bbbb35d.chunk.js",
+    "main.js.map": "/static/js/main.8bbbb35d.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.a06e69b5.js",
     "runtime-main.js.map": "/static/js/runtime-main.a06e69b5.js.map",
     "static/css/2.df93ccea.chunk.css": "/static/css/2.df93ccea.chunk.css",
-    "static/js/2.022f5713.chunk.js": "/static/js/2.022f5713.chunk.js",
-    "static/js/2.022f5713.chunk.js.map": "/static/js/2.022f5713.chunk.js.map",
+    "static/js/2.ec902f5b.chunk.js": "/static/js/2.ec902f5b.chunk.js",
+    "static/js/2.ec902f5b.chunk.js.map": "/static/js/2.ec902f5b.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.df93ccea.chunk.css.map": "/static/css/2.df93ccea.chunk.css.map",
-    "static/css/main.ac49eadc.chunk.css.map": "/static/css/main.ac49eadc.chunk.css.map",
-    "static/js/2.022f5713.chunk.js.LICENSE.txt": "/static/js/2.022f5713.chunk.js.LICENSE.txt",
+    "static/css/main.387e2f55.chunk.css.map": "/static/css/main.387e2f55.chunk.css.map",
+    "static/js/2.ec902f5b.chunk.js.LICENSE.txt": "/static/js/2.ec902f5b.chunk.js.LICENSE.txt",
     "static/media/FarmToHomeLogoLong.png": "/static/media/FarmToHomeLogoLong.b993482a.png",
     "static/media/beef-logo.png": "/static/media/beef-logo.f193b740.png",
     "static/media/dairy-eggs-logo.png": "/static/media/dairy-eggs-logo.9fa3d884.png",
@@ -25,8 +25,8 @@
   "entrypoints": [
     "static/js/runtime-main.a06e69b5.js",
     "static/css/2.df93ccea.chunk.css",
-    "static/js/2.022f5713.chunk.js",
-    "static/css/main.ac49eadc.chunk.css",
-    "static/js/main.7f4aa295.chunk.js"
+    "static/js/2.ec902f5b.chunk.js",
+    "static/css/main.387e2f55.chunk.css",
+    "static/js/main.8bbbb35d.chunk.js"
   ]
 }

@@ -24,27 +24,27 @@ const UserSchema = new mongoose.Schema({
         required: [true, "Required Field"],
         minlength: [10, "Must be a minimum of 10 digits. EX. 555-555-5555"]
     },
-    street1: {
-        type: String,
-        required: [true, "Required Field."]
-    },
-    street2: String,
-    city: {
-        type: String,
-        required: [true, "Required Field."]
-    },
-    addressState: {
-        type: String,
-        required: [true, "Required Field."]
-    },
-    country: {
-        type: String,
-        default: 'USA'
-    },
-    zip: {
-        type: String,
-        required: [true, "Required Field."]
-    },    
+    // street1: {
+    //     type: String,
+    //     required: [true, "Required Field."]
+    // },
+    // street2: String,
+    // city: {
+    //     type: String,
+    //     required: [true, "Required Field."]
+    // },
+    // addressState: {
+    //     type: String,
+    //     required: [true, "Required Field."]
+    // },
+    // country: {
+    //     type: String,
+    //     default: 'USA'
+    // },
+    // zip: {
+    //     type: String,
+    //     required: [true, "Required Field."]
+    // },    
     password: {
         type: String,
         required: [true, "Required Field"],

@@ -1,4 +1,5 @@
 const { Category } = require('../../models/category.model');
+const { Order } = require('../../models/order.model');
 const { Product } = require('../../models/product.model');
 
 
@@ -29,9 +30,13 @@ module.exports = {
             .select('_id name price measurement description inStock productImage category')
             .populate({path: 'category', select: '_id name'})
             .exec();
+        const orders = await Order.find({})
+            .populate("items.productId", "_id name measurement inStock")
+            .exec();
         res.status(200).json({
             categories: getCategoryList(categories),
-            products
+            products,
+            orders
         })
     }
 }

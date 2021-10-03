@@ -34,7 +34,7 @@ const CartItem = ({ item, qtyChangeHandler, removeFromCartHandler }) => {
 
             <button
                 className="cart-item-delete-btn btn btn--primary btn--med"
-                onClick={() => removeFromCartHandler(item.product.product)}
+                onClick={() => removeFromCartHandler(item.product._id)}
             >
                 <i className="fas fa-trash"></i>
             </button>

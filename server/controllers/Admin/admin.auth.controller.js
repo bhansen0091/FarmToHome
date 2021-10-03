@@ -14,7 +14,7 @@ module.exports = {
                     req.body.role = 'admin';
                     User.create(req.body)
                         .then(data => {
-                            res.cookie("usertoken", jwt.sign({ id: data._id }, process.env.JWT_KEY), {
+                            res.cookie("admintoken", jwt.sign({ id: data._id }, process.env.JWT_KEY), {
                                 httpOnly: true,
                                 expires: new Date(Date.now() + 7200)
                             }).json({
@@ -43,12 +43,12 @@ module.exports = {
                         .then(isValid => {
                             if (isValid === true && data.role === "admin") {
                                 const token = jwt.sign({ id: data._id, role: data.role }, process.env.JWT_KEY);
-                                res.cookie("usertoken", token, {
+                                res.cookie("admintoken", token, {
                                     httpOnly: true,
                                     // expires: new Date(Date.now() + 7200)
                                 }).json({
                                     message: "Admin login successful.",
-                                    token: token,
+                                    // token: token,
                                     user: {
                                         _id: data._id,
                                         firstName: data.firstName,
@@ -70,7 +70,7 @@ module.exports = {
     },
 
     logout: (req, res) => {
-        res.clearCookie("usertoken");
+        res.clearCookie("admintoken");
         res.status(200).json({ message: "Admin logged out." });
     }
 }
