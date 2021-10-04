@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/adminConstants';
-import axios from 'axios';
 import axiosInstance from '../../helpers/axios';
+// import axios from 'axios';
 
 
 export const register = (user) => {
@@ -13,7 +13,7 @@ export const register = (user) => {
             }
         });
 
-        await axios.post(`http://localhost:8000/api/admin/register`, { ...user }, { withCredentials: true })
+        await axiosInstance.post(`/admin/register`, { ...user }, { withCredentials: true })
             .then(res => {
                 // console.log(res.data);
                 if (res.data.message) {
@@ -61,7 +61,7 @@ export const login = (user) => {
             }
         });
 
-        await axios.post(`http://localhost:8000/api/admin/login`, { ...user }, { withCredentials: true })
+        await axiosInstance.post(`/admin/login`, { ...user }, { withCredentials: true })
             .then(res => {
                 // console.log(res.data);
                 if (res.data.message) {
@@ -130,7 +130,7 @@ export const logout = () => {
 
         // const token = localStorage.getItem('token');
 
-        await axios.get(`http://localhost:8000/api/admin/logout`, { withCredentials: true })
+        await axiosInstance.get(`/admin/logout`, { withCredentials: true })
             .then(res => {
                 if (res.status === 200) {
                     // console.log("success");

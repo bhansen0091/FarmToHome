@@ -1,11 +1,11 @@
 import * as actionTypes from '../constants/adminConstants'
-import axios from "../../helpers/axios";
+import axiosInstance from "../../helpers/axios";
 
 export const getCustomerOrders = () => {
     return async (dispatch) => {
         dispatch({ type: actionTypes.GET_CUSTOMER_ORDERS_REQUEST });
         try {
-            const res = await axios.get("/orders/all", { withCredentials: true });
+            const res = await axiosInstance.get("/orders/all", { withCredentials: true });
             if (res.status === 200) {
                 const { orders } = res.data;
                 // console.log('getOrders', res.data);
@@ -30,7 +30,7 @@ export const updateOrder = (payload) => {
     return async (dispatch) => {
         dispatch({ type: actionTypes.UPDATE_CUSTOMER_ORDER_REQUEST });
         try {
-            const res = await axios.put("/orders/update", payload, { withCredentials: true });
+            const res = await axiosInstance.put("/orders/update", payload, { withCredentials: true });
             if (res.status === 201) {
                 dispatch({ type: actionTypes.UPDATE_CUSTOMER_ORDER_SUCCESS });
                 dispatch(getCustomerOrders());

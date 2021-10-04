@@ -1,5 +1,6 @@
 import * as actionTypes from '../constants/adminConstants'
-import axios from "axios"
+import axiosInstance from '../../helpers/axios';
+// import axios from "axios"
 
 export const getAllCategories = () => {
     return async dispatch => {
@@ -8,7 +9,7 @@ export const getAllCategories = () => {
             type: actionTypes.GET_ALL_CATEGORIES_REQUEST
         });
 
-        const res = await axios.get(`http://localhost:8000/api/categories`);
+        const res = await axiosInstance.get(`/categories`);
         // console.log(res.data);
         if (res.status === 200) {
             const { categoryList } = res.data
@@ -32,7 +33,7 @@ export const addCategory = (cate) => {
             type: actionTypes.ADD_NEW_CATEGORY_REQUEST
         })
 
-        await axios.post(`http://localhost:8000/api/categories`, cate, { withCredentials: true })
+        await axiosInstance.post(`/categories`, cate, { withCredentials: true })
             .then(res => {
                 // console.log("res.data in the .then");
                 // console.log(res.data);
@@ -60,7 +61,7 @@ export const updateMultipleCategories = (cate) => {
             type: actionTypes.UPDATE_CATEGORIES_REQUEST
         })
 
-        const res = await axios.post(`http://localhost:8000/api/categories/update-multiple`, cate);
+        const res = await axiosInstance.post(`/categories/update-multiple`, cate);
 
         if (res.status === 201) {
             dispatch({
@@ -89,7 +90,7 @@ export const deleteCategories = (ids) => {
             type: actionTypes.DELETE_CATEGORIES_REQUEST
         });
 
-        const res = await axios.post(`http://localhost:8000/api/categories/delete-multiple`, {
+        const res = await axiosInstance.post(`/categories/delete-multiple`, {
             payload: {
                 ids
             }
@@ -111,20 +112,3 @@ export const deleteCategories = (ids) => {
     }
 }
 
-
-
-    // const res = await axios.post(`http://localhost:8000/api/categories`, cate, { withCredentials: true })
-    // console.log(res);
-    // if (res.satus === 200) {
-    // dispatch({
-    //     type: actionTypes.ADD_NEW_CATEGORY_SUCCESS,
-    //     payload: res.data
-    // })
-    // } else {
-    //     console.log("in the else");
-    //     console.log(res);
-    // dispatch({
-    //     type: actionTypes.ADD_NEW_CATEGORY_FAIL,
-    //     payload: res.data.error
-    // })
-    // }

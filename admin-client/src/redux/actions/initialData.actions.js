@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/adminConstants'
-// import * as orderActiontypes from '../constants'
-import axios from "axios"
+import axiosInstance from '../../helpers/axios';
+// import axios from "axios"
 
 
 export const getInitialData = () => {
@@ -9,7 +9,7 @@ export const getInitialData = () => {
             type: actionTypes.GET_INITIAL_DATA_REQUEST
         });
 
-        const res = await axios.get(`http://localhost:8000/api/initial-data`);
+        const res = await axiosInstance.get(`/initial-data`);
         if (res.status === 200) {
             const { categories: categoryList, products, orders } = res.data;
 

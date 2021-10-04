@@ -1,5 +1,6 @@
 import * as actionTypes from '../constants/cartConstants';
 import store from '../store';
+import axiosInstance from '../../helpers/axios';
 import axios from 'axios';
 
 export const getCartItems = () => {
@@ -7,7 +8,7 @@ export const getCartItems = () => {
         // console.log('inside here');
         try {
             dispatch({ type: actionTypes.ADD_TO_DB_CART_REQUEST });
-            const res = await axios.get(`/api/user/cart`);
+            const res = await axiosInstance.get(`/user/cart`, { withCredentials: true });
             // console.log(res.data);
             if (res.status === 200) {
                 const cartItems = res.data;
@@ -34,7 +35,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
     // console.log('id', id);
     // console.log('qty', qty);
 
-    const { data } = await axios.get(`/api/products/${id}`);
+    const { data } = await axiosInstance.get(`/products/${id}`, { withCredentials: true });
     const appStore = store.getState();
     const auth = appStore.auth;
     // const currentCart = JSON.parse(localStorage.getItem('cart'))
@@ -63,7 +64,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
                 }
             ]
         }
-        const res = await axios.post(`/api/user/cart/add`, sendIt, { withCredentials: true })
+        const res = await axiosInstance.post(`/user/cart/add`, sendIt, { withCredentials: true })
         if (res.status === 201 || res.status === 200) {
             // console.log('add to db cart success', res);
             dispatch(getCartItems());
@@ -116,7 +117,7 @@ export const updateCart = () => async (dispatch, getState) => {
             }
             if (Object.keys(cartItems).length > 0) {
                 // console.log('sending payload:', payload);
-                const res = await axios.post(`/api/user/cart/add`, payload, { withCredentials: true })
+                const res = await axiosInstance.post(`/user/cart/add`, payload, { withCredentials: true })
                 if (res.status === 201) {
                     dispatch(getCartItems());
                 }
@@ -142,7 +143,7 @@ export const removeFromCart = (id) => async (dispatch, getState) => {
         dispatch({
             type: actionTypes.REMOVE_FROM_DB_CART_REQUEST
         })
-        const res = await axios.get(`/api/user/remove/item/${id}`, { withCredentials: true })
+        const res = await axiosInstance.get(`/user/remove/item/${id}`, { withCredentials: true })
         if (res.status === 201) {
             // console.log('status is 201');
             dispatch(getCartItems());

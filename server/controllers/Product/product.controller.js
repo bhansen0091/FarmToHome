@@ -16,13 +16,7 @@ module.exports = {
         res.status(200).json({ products: products })
     },
     create: (req, res) => {
-
-        // const { category, name, description, price, measurement, inStock } = req.body;
-
-        // console.log(req);
-        // console.log(req.body);
-        // console.log(req.file);
-
+        
         const productObj = {
             category: req.body.category,
             name: req.body.name,

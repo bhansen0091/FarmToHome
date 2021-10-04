@@ -1,5 +1,6 @@
 import * as actionTypes from '../constants/category.constants';
 import axios from 'axios';
+import axiosInstance from '../../helpers/axios';
 
 export const getAllCategories = () => {
     return async dispatch => {
@@ -7,7 +8,7 @@ export const getAllCategories = () => {
             type: actionTypes.GET_ALL_CATEGORIES_REQUEST
         });
 
-        const res = await axios.get(`/api/categories`);
+        const res = await axiosInstance.get(`/categories`);
 
         if (res.status === 200) {
             const { categoryList } = res.data

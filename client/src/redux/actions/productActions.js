@@ -1,12 +1,13 @@
 import * as actionTypes from '../constants/productConstants';
 import axios from 'axios';
+import axiosInstance from '../../helpers/axios';
 
 
 export const getAllProducts = () => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
 
-        const res = await axios.get(`/api/categories/products`);
+        const res = await axiosInstance.get(`/categories/products`);
 
         if (res.status === 200) {
             dispatch({
@@ -33,7 +34,7 @@ export const getProductsByCat = (name) => {
             type: actionTypes.GET_FILTERED_PRODUCTS_REQUEST
         })
 
-        const res = await axios.get(`/api/category/products/${name}`);
+        const res = await axiosInstance.get(`/category/products/${name}`);
         if (res.status === 200) {
             dispatch({
                 type: actionTypes.GET_FILTERED_PRODUCTS_SUCCESS,
@@ -53,7 +54,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST });
 
-        const { data } = await axios.get(`/api/products/${id}`);
+        const { data } = await axiosInstance.get(`/products/${id}`);
 
         dispatch({
             type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS,

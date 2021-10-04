@@ -1,6 +1,7 @@
 import * as actionTypes from '../constants/userConstants';
 import * as cartActionTypes from '../constants/cartConstants';
 import axios from 'axios';
+import axiosInstance from '../../helpers/axios';
 
 
 export const register = (user) => {
@@ -13,7 +14,7 @@ export const register = (user) => {
             }
         });
 
-        await axios.post(`http://localhost:8000/api/users/register`, { ...user }, { withCredentials: true })
+        await axiosInstance.post(`/users/register`, { ...user }, { withCredentials: true })
             .then(res => {
                 // console.log(res.data);
                 if (res.data.message) {
@@ -61,7 +62,7 @@ export const login = (user) => {
             }
         });
 
-        await axios.post(`http://localhost:8000/api/users/login`, { ...user }, { withCredentials: true })
+        await axiosInstance.post(`/users/login`, { ...user }, { withCredentials: true })
             .then(res => {
                 // console.log(res.data);
                 if (res.data.message) {
@@ -136,7 +137,7 @@ export const logout = () => {
 
         // const token = localStorage.getItem('token');
 
-        await axios.get(`http://localhost:8000/api/users/logout`, { withCredentials: true })
+        await axiosInstance.get(`/users/logout`, { withCredentials: true })
             .then(res => {
                 if (res.status === 200) {
                     // console.log("success");
@@ -176,7 +177,7 @@ export const logout = () => {
 export const getAddress = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`/api/address/get`);
+            const res = await axiosInstance.get(`/address/get`);
             dispatch({ type: actionTypes.GET_USER_ADDRESS_REQUEST });
             if (res.status === 200) {
                 const {
@@ -203,7 +204,7 @@ export const addAddress = (payload) => {
     return async (dispatch) => {
         try {
             dispatch({ type: actionTypes.ADD_USER_ADDRESS_REQUEST });
-            const res = await axios.post(`/api/address/create`, { payload });
+            const res = await axiosInstance.post(`/address/create`, { payload });
             if (res.status === 201) {
                 // console.log(res);
                 const {
@@ -277,7 +278,7 @@ export const addAddress = (payload) => {
 export const addOrder = (payload) => {
     return async (dispatch) => {
         try {
-            const res = await axios.post(`/api/orders/add`, payload, { withCredentials: true });
+            const res = await axiosInstance.post(`/orders/add`, payload, { withCredentials: true });
             // console.log('res in addOrder from actions', res);
             dispatch({ type: actionTypes.ADD_USER_ORDER_REQUEST });
             if (res.status === 201) {
@@ -307,7 +308,7 @@ export const addOrder = (payload) => {
 export const getOrders = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`/api/orders/getOrders`, { withCredentials: true });
+            const res = await axiosInstance.get(`/orders/getOrders`, { withCredentials: true });
             dispatch({ type: actionTypes.GET_USER_ORDER_REQUEST });
             if (res.status === 200) {
                 // console.log(res.data);
@@ -333,7 +334,7 @@ export const getOrders = () => {
 export const getOrder = () => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`/api/orders/getOrder`, { withCredentials: true });
+            const res = await axiosInstance.get(`/orders/getOrder`, { withCredentials: true });
             dispatch({ type: actionTypes.GET_USER_ORDER_DETAILS_REQUEST });
             if (res.status === 200) {
                 console.log(res);
