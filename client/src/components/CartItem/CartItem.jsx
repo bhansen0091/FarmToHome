@@ -1,5 +1,6 @@
 import './CartItem.css';
 import { Link } from 'react-router-dom';
+import { generatePublicUrl } from '../../urlConfig';
 
 const CartItem = ({ item, qtyChangeHandler, removeFromCartHandler }) => {
 
@@ -8,7 +9,7 @@ const CartItem = ({ item, qtyChangeHandler, removeFromCartHandler }) => {
     return (
         <div className="cart-item">
             <div className="cart-item-image">
-                <img src={item.product.productImage} alt={item.product.name} />
+                <img src={generatePublicUrl(item.product.productImage)} alt={item.product.name} />
             </div>
             <Link to={`/product/${item.product._id}`} className="btn btn--primary btn--med cart-item-name">
                 {item.product.name}

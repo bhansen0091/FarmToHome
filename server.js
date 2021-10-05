@@ -18,6 +18,12 @@ app.use(
 );
 app.use('/public', express.static(__dirname + '/server/uploads'))
 
+// app.get('/public', (req, res) => {
+//     res.send(__dirname);
+// })
+
+// console.log('__dirname ', __dirname);
+
 require('./server/config/database.config');
 require('./server/routes/user.routes')(app);
 require('./server/routes/admin.routes')(app);

@@ -1,16 +1,15 @@
-import { Button } from "../Button/Button";
+
 import { MenuItems } from './MenuItems';
 import { useEffect, useState } from "react";
 import './Navbar.css';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
 import RegistrationModal from "../Registration/RegistrationModal";
 import LoginModal from "../Login/LoginModal";
-import { logout, login } from "../../redux/actions/userAuth.actions";
+import { logout } from "../../redux/actions/userAuth.actions";
 import { updateCart } from "../../redux/actions/cartActions";
 import { Dropdown } from "react-bootstrap";
-import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 
 const NavBar = () => {
 

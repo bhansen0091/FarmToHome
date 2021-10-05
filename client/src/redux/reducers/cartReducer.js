@@ -88,6 +88,7 @@ export const cartReducer = (state = initialState, action) => {
             state = {
                 ...initialState
             }
+            break;
         case actionTypes.REMOVE_FROM_DB_CART_SUCCESS:
             state = {
                 ...state,

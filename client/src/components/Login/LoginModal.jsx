@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 
 // Bootstrap Components
 import { Container, Row, Form, Col, Button, Modal } from 'react-bootstrap';

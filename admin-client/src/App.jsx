@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
 // Routing
@@ -16,7 +16,6 @@ import HomeScreen from './views/HomeScreen/HomeScreen';
 
 
 // Redux
-import { getAllCategories } from './redux/actions/category.actions';
 import { isUserLoggedIn } from './redux/actions/adminAuth.actions'
 import { useSelector, useDispatch } from 'react-redux';
 import { getInitialData } from './redux/actions/initialData.actions';
@@ -29,7 +28,6 @@ function App() {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
-    // dispatch(getAllCategories());
     dispatch(getInitialData());
   }, [])
 

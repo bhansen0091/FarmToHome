@@ -1,7 +1,7 @@
 import * as actionTypes from '../constants/cartConstants';
 import store from '../store';
 import axiosInstance from '../../helpers/axios';
-import axios from 'axios';
+// import axios from 'axios';
 
 export const getCartItems = () => {
     return async (dispatch) => {

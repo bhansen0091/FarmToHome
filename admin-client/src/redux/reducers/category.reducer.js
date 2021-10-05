@@ -22,7 +22,7 @@ const buildNewCategoryList = (parentId, categoryList, category) => {
 
     for (const cat of categoryList) {
 
-        if (cat._id == parentId) {
+        if (cat._id === parentId) {
             const newCategory = {
                 _id: category._id,
                 name: category.name,

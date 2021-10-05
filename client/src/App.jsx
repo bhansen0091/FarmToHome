@@ -19,7 +19,7 @@ import FilteredProductScreen from './views/FilteredProductScreen/FilteredProduct
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { isUserLoggedIn } from './redux/actions/userAuth.actions';
-import { getCartItems, updateCart } from './redux/actions/cartActions';
+import { getCartItems } from './redux/actions/cartActions';
 
 
 const App = () => {

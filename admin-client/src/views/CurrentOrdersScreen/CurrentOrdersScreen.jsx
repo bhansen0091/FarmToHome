@@ -95,9 +95,9 @@ const CurrentOrdersScreen = (props) => {
         return nextStatus;
     }
 
-    const sortAscending = () => {
-        [...orders].sort((a, b) => a - b);
-    }
+    // const sortAscending = () => {
+    //     [...orders].sort((a, b) => a - b);
+    // }
 
     return (
         <Layout sidebar>

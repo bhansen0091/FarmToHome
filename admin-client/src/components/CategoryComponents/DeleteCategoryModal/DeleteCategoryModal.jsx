@@ -1,6 +1,5 @@
 
 // Components
-import CategoryForm from '../../CategoryForm/CategoryForm';
 
 // Bootstrap Components
 import { Modal, Form, Button } from 'react-bootstrap';
@@ -10,7 +9,6 @@ const DeleteCategoryModal = (props) => {
     const {
         show,
         onHide,
-        expandedArray,
         checkedArray,
         deleteCategories,
         handleClose

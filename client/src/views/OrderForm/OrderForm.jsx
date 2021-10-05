@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 // Components
 import EasyOrderSection from '../../components/EasyOrderSection/EasyOrderSection';

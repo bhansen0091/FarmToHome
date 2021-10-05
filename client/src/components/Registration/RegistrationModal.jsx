@@ -1,4 +1,4 @@
-import { Redirect } from 'react-router-dom';
+
 import React, { useEffect, useState } from 'react';
 
 // Bootstrap Components
@@ -21,7 +21,7 @@ const RegistrationModal = (props) => {
         handleClose
     } = props;
 
-    const auth = useSelector(state => state.auth);
+    // const auth = useSelector(state => state.auth);
     const regAuth = useSelector(state => state.regAuth);
     const dispatch = useDispatch();
 

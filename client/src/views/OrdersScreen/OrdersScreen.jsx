@@ -1,5 +1,5 @@
 // React
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 // Redux
 import { getOrders } from '../../redux/actions/userAuth.actions'
@@ -9,7 +9,6 @@ import { Table } from 'react-bootstrap';
 
 // Components
 import OrderScreenCard from '../../components/OrderScreenCard/OrderScreenCard';
-import { Button } from '../../components/Button/Button';
 
 // CSS
 
@@ -18,10 +17,8 @@ const OrdersScreen = (props) => {
     const dispatch = useDispatch();
 
     // User Information States
-    const auth = useSelector((state) => state.auth)
+    // const auth = useSelector((state) => state.auth)
     const user = useSelector((state) => state.userDetails)
-
-    const [date, setDate] = useState('');
 
     const makeDate = (order) => {
         // console.log(typeof order.createdAt);
@@ -38,15 +35,6 @@ const OrdersScreen = (props) => {
         order.items.map((item) => {
             dispatch(addToCart(item.productId._id, item.purchasedQty));
         })
-
-        // order.items.forEach(item => {
-        // if (qty < 1) {
-        //     setQty(1);
-        // }
-        // setQty(item.purchasedQty);
-        // dispatch(addToCart(item._id, qty));
-        // });
-
     }
 
     // User Orders

@@ -2,7 +2,6 @@ import './OurProductsScreen.css';
 import { useEffect } from 'react';
 
 // Components
-import Product from '../../components/ProductCard/ProductCard';
 import CategoryMenu from '../../components/CategoryMenu/CategoryMenu';
 import ProductSection from '../../components/ProductSection/ProductSection';
 
@@ -18,8 +17,8 @@ const OurProductsScreen = () => {
     const getAllProducts = useSelector((state) => state.getAllProducts);
     const { products, loading, error } = getAllProducts;
 
-    const getAllCategories = useSelector((state) => state.categories);
-    const { categoryList } = getAllCategories;
+    // const getAllCategories = useSelector((state) => state.categories);
+    // const { categoryList } = getAllCategories;
     // console.log(categoryList);
 
     useEffect(() => {
@@ -105,92 +104,3 @@ const OurProductsScreen = () => {
     )
 }
 export default OurProductsScreen;
-
-
-
-{/* <div>
-                    <img src={require('../../img/beef-logo.png').default} alt="beef-logo" />
-                </div>
-                <div className="our-products-screen-products">
-                    {
-                        loading ? (
-                            <h2>Loading...</h2>
-                        ) : error ? (
-                            <h2>{error}</h2>
-                        ) :
-                            products.products
-                                ? products.products.map((product, idx) =>
-                                    product.category.name == "Beef"
-                                        ? <Product key={idx}
-                                            productId={product._id}
-                                            category={product.category._id}
-                                            name={product.name}
-                                            productImage={product.productImage}
-                                            price={product.price}
-                                            measurement={product.measurement}
-                                            description={product.description}
-                                            inStock={product.inStock}
-                                        />
-                                        : null
-                                )
-                                : null
-                    }
-
-                </div> */}
-
-
-
-
-
-
-// const testCatList = (categories) => {
-    //     let newCatList = [];
-    //     let subCats = [];
-    //     for (const category of categories) {
-    //         newCatList.push(
-    //             category._id
-    //         )
-    //         if (category.children.length > 0) {
-    //             subCats.push(
-    //                 testCatList(category.children)
-    //             )
-    //         }
-    //     }
-    //     for (const arr of subCats) {
-    //         for (const catId of arr) {
-    //             newCatList.push(
-    //                 catId
-    //             )
-    //         }
-    //     }
-        // console.log(subCats);
-    //     return newCatList;
-    // }
-
-    // const catList = testCatList(categoryList);
-    // console.log(catList[17]);
-
-    // const workPlease = (catList, products) => {
-    //     const output = [];
-    //     for (const categoryId of catList) {
-    //         products.map((product, idx) => {
-    //             if (product.category === categoryId) {
-    //                 output.push(
-    //                     <>
-    //                         <Product key={idx}
-    //                             productId={product._id}
-    //                             category={product.category}
-    //                             name={product.name}
-    //                             productImage={product.productImage}
-    //                             price={product.price}
-    //                             measurement={product.measurement}
-    //                             description={product.description}
-    //                             inStock={product.inStock}
-    //                         />
-    //                     </>
-    //                 )
-    //             }
-    //         })
-    //     }
-    //     return output;
-    // }

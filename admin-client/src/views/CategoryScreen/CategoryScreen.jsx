@@ -7,12 +7,10 @@ import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 // Bootstrap Components
 import { Container, Col, Row } from 'react-bootstrap';
-import { Modal, Form, Button } from 'react-bootstrap';
 
 // Redux
 import {
     addCategory,
-    getAllCategories,
     updateMultipleCategories,
     deleteCategories as deleteCategoriesAction
 } from '../../redux/actions/category.actions';
@@ -172,7 +170,7 @@ const CategoryScreen = () => {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Delete Categories ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
     const deleteCategories = () => {
         const checkedIdArray = checkedArray.map((item, idx) => ({ _id: item.value }));
-        const expandedIdArray = expandedArray.map((item, idx) => ({ _id: item.value }));
+        // const expandedIdArray = expandedArray.map((item, idx) => ({ _id: item.value }));
         // const idArray = expandedIdArray.concat(checkedIdArray);
 
         if (checkedIdArray.length > 0) {

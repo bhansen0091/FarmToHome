@@ -14,6 +14,7 @@ import { getInitialData } from '../../redux/actions/initialData.actions';
 // Components
 import InputDefault from '../../components/UI/Inputs/InputDefault';
 import Layout from '../../components/Layout/Layout';
+import { generatePublicUrl } from '../../urlConfig';
 // import ProductModal from '../../components/ProductModal/ProductModal';
 
 
@@ -288,8 +289,6 @@ const ProductScreen = (props) => {
             return null;
         }
 
-        const { REACT_APP_HOST } = process.env
-
         return (
             <Modal
                 show={productModal}
@@ -328,7 +327,7 @@ const ProductScreen = (props) => {
                         <Col>
                             <label className="key">Product Image</label>
                             <div className="productImageContainer">
-                                <img src={`${REACT_APP_HOST}${productDetails.productImage}`} alt={productDetails.name} />
+                                <img src={generatePublicUrl(productDetails.productImage)} alt={productDetails.name} />
                             </div>
                         </Col>
                     </Row>

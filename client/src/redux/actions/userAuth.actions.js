@@ -1,7 +1,7 @@
 import * as actionTypes from '../constants/userConstants';
 import * as cartActionTypes from '../constants/cartConstants';
-import axios from 'axios';
 import axiosInstance from '../../helpers/axios';
+// import axios from 'axios';
 
 
 export const register = (user) => {
@@ -177,7 +177,7 @@ export const logout = () => {
 export const getAddress = () => {
     return async (dispatch) => {
         try {
-            const res = await axiosInstance.get(`/address/get`);
+            const res = await axiosInstance.get(`/address/get`, { withCredentials: true });
             dispatch({ type: actionTypes.GET_USER_ADDRESS_REQUEST });
             if (res.status === 200) {
                 const {
@@ -204,7 +204,7 @@ export const addAddress = (payload) => {
     return async (dispatch) => {
         try {
             dispatch({ type: actionTypes.ADD_USER_ADDRESS_REQUEST });
-            const res = await axiosInstance.post(`/address/create`, { payload });
+            const res = await axiosInstance.post(`/address/create`, { payload }, { withCredentials: true });
             if (res.status === 201) {
                 // console.log(res);
                 const {
@@ -226,9 +226,6 @@ export const addAddress = (payload) => {
             // console.log('2', error.response.data.error.errors);
             // console.log('3', Object.entries(error.response.data.error.errors));
             // console.log(error.response.data.error.errors.address.errors);
-
-            let temp;
-            let errorCheck;
 
             if (error.response.data.error.errors.address) {
                 const fieldErrors = error.response.data.error.errors.address.errors;

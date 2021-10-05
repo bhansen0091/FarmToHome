@@ -6,43 +6,43 @@ const initialState = {
     error: null
 };
 
-const buildNewCategoryList = (parentId, categoryList, category) => {
-    const newCategoryList = [];
+// const buildNewCategoryList = (parentId, categoryList, category) => {
+//     const newCategoryList = [];
 
-    if (parentId === undefined) {
-        return [
-            ...categoryList,
-            {
-                _id: category._id,
-                name: category.name,
-                children: []
-            }
-        ]
-    }
+//     if (parentId === undefined) {
+//         return [
+//             ...categoryList,
+//             {
+//                 _id: category._id,
+//                 name: category.name,
+//                 children: []
+//             }
+//         ]
+//     }
 
-    for (const cat of categoryList) {
+//     for (const cat of categoryList) {
 
-        if (cat._id == parentId) {
-            newCategoryList.push({
-                ...cat,
-                children: cat.children ? buildNewCategoryList(parentId, [
-                    ...cat.children,
-                    {
-                        _id: category._id,
-                        name: category.name,
-                        parentId: category.parentId,
-                        children: category.children
-                    }], category) : []
-            })
-        } else {
-            newCategoryList.push({
-                ...cat,
-                children: cat.children ? buildNewCategoryList(cat.parentId, cat.children, category) : []
-            })
-        }
-    }
-    return newCategoryList;
-}
+//         if (cat._id == parentId) {
+//             newCategoryList.push({
+//                 ...cat,
+//                 children: cat.children ? buildNewCategoryList(parentId, [
+//                     ...cat.children,
+//                     {
+//                         _id: category._id,
+//                         name: category.name,
+//                         parentId: category.parentId,
+//                         children: category.children
+//                     }], category) : []
+//             })
+//         } else {
+//             newCategoryList.push({
+//                 ...cat,
+//                 children: cat.children ? buildNewCategoryList(cat.parentId, cat.children, category) : []
+//             })
+//         }
+//     }
+//     return newCategoryList;
+// }
 
 export const categoryReducer = (state = initialState, action) => {
     switch (action.type) {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // CSS
 import './ProductCard.css';
@@ -12,6 +12,7 @@ import { Button } from '../../components/Button/Button'
 // Redux
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/actions/cartActions';
+import { generatePublicUrl } from '../../urlConfig';
 
 
 const Product = ({ productId, category, name, productImage, price, measurement, description, inStock }) => {
@@ -28,7 +29,7 @@ const Product = ({ productId, category, name, productImage, price, measurement, 
 
     return (
         <div className="product">
-            <img src={productImage} alt={name} />
+            <img src={generatePublicUrl(productImage)} alt={name} />
             <div className="product-info">
                 <h1
                     style={{

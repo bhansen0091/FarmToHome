@@ -1,8 +1,8 @@
 import React from 'react';
 
 // Bootstrap Components
-import { Container, Col, Row } from 'react-bootstrap';
-import { Modal, Form, Button } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 // Components
 import InputDefault from '../../components/UI/Inputs/InputDefault';

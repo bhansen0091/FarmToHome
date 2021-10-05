@@ -27,7 +27,8 @@ module.exports = {
         }
 
         if (req.file) {
-            productObj.productImage = '/public/' + req.file.filename;
+            console.log('req.file ', req.file);
+            productObj.productImage = req.file.filename;
         }
 
         Product.create(productObj)

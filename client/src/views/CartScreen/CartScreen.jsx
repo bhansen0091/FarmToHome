@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 
 // Components
 import CartItem from '../../components/CartItem/CartItem';
-import { Button } from '../../components/Button/Button';
 import { addToCart, removeFromCart, getCartItems } from '../../redux/actions/cartActions';
 
 // CSS

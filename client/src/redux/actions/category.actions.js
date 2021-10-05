@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/category.constants';
-import axios from 'axios';
 import axiosInstance from '../../helpers/axios';
+// import axios from 'axios';
 
 export const getAllCategories = () => {
     return async dispatch => {
