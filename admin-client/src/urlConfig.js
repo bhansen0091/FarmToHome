@@ -7,6 +7,6 @@ export const generatePublicUrl = (fileName) => {
     // console.log(process.env.NODE_ENV);    
     const location = process.env.NODE_ENV !== 'production'
         ? `http://localhost:8000/public/${fileName}`
-        : `texas.houstonfarmtohome.com/public/${fileName}`
+        : `/public/${fileName}`
     return location;
 }
