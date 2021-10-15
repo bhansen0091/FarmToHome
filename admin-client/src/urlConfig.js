@@ -10,3 +10,5 @@ export const generatePublicUrl = (fileName) => {
         : `/public/${fileName}`
     return location;
 }
+
+

@@ -16,7 +16,7 @@ module.exports = {
         res.status(200).json({ products: products })
     },
     create: (req, res) => {
-        
+
         const productObj = {
             category: req.body.category,
             name: req.body.name,
@@ -27,7 +27,7 @@ module.exports = {
         }
 
         if (req.file) {
-            console.log('req.file ', req.file);
+            // console.log('req.file ', req.file);
             productObj.productImage = req.file.filename;
         }
 
@@ -63,13 +63,29 @@ module.exports = {
             .catch(err => res.status(404).json({ errors: err.errors }))
     },
     update: (req, res) => {
+        console.log('req.body update', req.body)
         Product.updateOne({ _id: req.params.id }, req.body, { runValidators: true, new: true })
             .then(data => res.json({ results: data }))
             .catch(err => res.status(404).json({ errors: err.errors }))
     },
     destroy: (req, res) => {
-        Product.deleteOne({ _id: req.params.id })
-            .then(data => res.redirect(303, '/api/products'))
-            .catch(err => res.status(404).json({ errors: err.errors }))
+        // console.log('req.body', req.body);
+        const { productId } = req.body.payload;
+        if (productId) {
+            Product.deleteOne({ _id: productId })
+            .exec((error, result) => {
+                if (error) return res.status(400).json({ error });
+                if (result) {
+                    res.status(202).json({ result });
+                }
+            });
+        } else {
+            res.status(400).json({ error: "Params required" });
+        }
     }
 }
+
+
+    // Product.deleteOne({ _id: req.params.id })
+    //     .then(data => res.redirect(303, '/api/products'))
+    //     .catch(err => res.status(404).json({ errors: err.errors }))

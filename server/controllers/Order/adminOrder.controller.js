@@ -21,7 +21,7 @@ module.exports = {
     //     })
     // },
     update: (req, res) => {
-        console.log(req.body);
+        // console.log(req.body);
         Order.findOneAndUpdate(
             { _id: req.body.orderId, "orderStatus.type": req.body.type },
             {

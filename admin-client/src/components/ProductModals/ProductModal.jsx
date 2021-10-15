@@ -14,7 +14,7 @@ import { addProduct } from '../../redux/actions/product.actions';
 // import { getAllCategories } from '../../redux/actions/category.actions';
 
 // Components
-import InputDefault from '../../components/UI/Inputs/InputDefault';
+import InputDefault from '../UI/Inputs/InputDefault';
 
 
 

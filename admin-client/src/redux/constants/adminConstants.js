@@ -50,6 +50,11 @@ export const ADD_NEW_PRODUCT_REQUEST = "ADD_NEW_PRODUCT_REQUEST";
 export const ADD_NEW_PRODUCT_SUCCESS = "ADD_NEW_PRODUCT_SUCCESS";
 export const ADD_NEW_PRODUCT_FAIL = "ADD_NEW_PRODUCT_FAIL";
 
+// Delete Products
+export const DELETE_PRODUCT_BY_ID_REQUEST = "DELETE_PRODUCT_BY_ID_REQUEST";
+export const DELETE_PRODUCT_BY_ID_SUCCESS = "DELETE_PRODUCT_BY_ID_SUCCESS";
+export const DELETE_PRODUCT_BY_ID_FAILURE = "DELETE_PRODUCT_BY_ID_FAILURE";
+
 // ~~~~~~~~~~~~~~~~~~ Initial Data ~~~~~~~~~~~~~~~~~~
 
 // Get Initial Data

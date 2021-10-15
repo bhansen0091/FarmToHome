@@ -14,7 +14,7 @@ export const register = (user) => {
 
         await axios.post(`http://localhost:8000/api/admin/register`, { ...user }, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.message) {
                     const { message } = res.data.message;
                     dispatch({

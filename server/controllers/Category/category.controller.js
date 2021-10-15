@@ -44,8 +44,8 @@ module.exports = {
                         error: "Category already exsists."
                     }))
                 } else {
-                    console.log(req.params);
-                    console.log(req.body);
+                    // console.log(req.params);
+                    // console.log(req.body);
                     const categoryObj = {
                         name: req.body.name
                     }

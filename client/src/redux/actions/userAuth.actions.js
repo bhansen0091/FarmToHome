@@ -155,7 +155,7 @@ export const logout = () => {
                         type: actionTypes.RESET_ADDRESS_SUCCESS
                     })
                 } else {
-                    console.log('logout fail in else');
+                    // console.log('logout fail in else');
                     dispatch({
                         type: actionTypes.USER_LOGOUT_FAIL,
                         payload: res.data.error

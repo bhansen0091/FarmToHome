@@ -69,7 +69,7 @@ export const categoryReducer = (state = initialState, action) => {
 
             const category = action.payload.category;
             const updatedCats = buildNewCategoryList(category.parentId, state.categoryList, category);
-            console.log(updatedCats);
+            // console.log(updatedCats);
 
             state = {
                 ...state,

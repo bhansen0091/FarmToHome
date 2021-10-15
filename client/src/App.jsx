@@ -30,7 +30,7 @@ const App = () => {
 
   useEffect(() => {
     if (!auth.authenticate) {
-      console.log('is user logged in? App');
+      // console.log('is user logged in? App');
       dispatch(isUserLoggedIn());
     }
   }, [auth.authenticate]);

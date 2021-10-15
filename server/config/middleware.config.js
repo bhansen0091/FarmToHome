@@ -14,6 +14,7 @@ module.exports.userAuthenticate = (req, res, next) => {
 
 module.exports.adminAuthenticate = (req, res, next) => {
     jwt.verify(req.cookies.admintoken, process.env.JWT_KEY, (err, payload) => {
+        // console.log('cookie', req)
         if (err) {
             res.status(401).json({ verified: false });
         } else {

@@ -35,7 +35,7 @@ const ProductScreen = ({ match, history }) => {
                 <>
                     <div className="product-screen-left">
                         <div className="left-image">
-                            <img src={product.productImage} alt="product name" />
+                            <img src={product.productImage} alt={product.name} />
                         </div>
                         <div className="left-info">
                             <p className="left-name">{product.name}</p>

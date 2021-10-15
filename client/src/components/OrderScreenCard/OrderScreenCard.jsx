@@ -28,7 +28,7 @@ const OrderScreenCard = (props) => {
     const [product, setProduct] = useState(initialProduct)
 
     const addToCartHandler = (product) => {
-        console.log('product from add to cart in OrderScreenCard', product);
+        // console.log('product from add to cart in OrderScreenCard', product);
         if (qty < 1) {
             setQty(1);
         }
